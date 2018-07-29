@@ -1,0 +1,21 @@
+ul {
+	width: 100%;
+	justify-content: space-evenly;
+	display: flex;
+
+	li {
+		text-align: center;
+	}
+}
+
+input {
+	width: 100%
+}
+
+
+@media only screen and (max-width : 991px) {
+	ul {
+		display: flex;
+		flex-direction: row;
+	}
+}

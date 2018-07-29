@@ -1,0 +1,64 @@
+<div *ngIf="gnomes.length; else loading" class="container-fluid">
+  <div *ngFor="let gnome of gnomes | searchFilter : searchTerm : filterBy" class="row gnome-row">
+    <div class="col-12">
+      <div class="row">
+        <div 
+          (click)="onToggleCollapse(gnome)"
+          [style.backgroundImage]="'url('+ gnome.thumbnail +')'" class="col-12 gnome-container"
+          data-toggle="collapse" 
+          data-target="#navbarSupportedContent" 
+          aria-controls="navbarSupportedContent">
+          <p> Name: {{ gnome.name }}</p>
+          <p  class="arrow mt-5" >{{ gnome.isOpen ? '△' : '▽' }}</p>
+        </div>
+      </div>
+    </div>
+    <div [class.show]="gnome.isOpen" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="row descriptions-row">
+        <div class="col-12 mt-3 underline">
+          <p>Description</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <p><strong>Age:</strong> {{ gnome.age }}</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <p><strong>Hair:</strong> {{ gnome.hair_color }}</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <p><strong>Weight:</strong> {{ gnome.weight }}</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <p><strong>Height:</strong> {{ gnome.height }}</p>
+        </div>
+      </div>
+      <div class="row professions-row">
+        <div class="col-12 mt-3">
+          <p>Professions</p>
+        </div>
+        <div *ngFor="let profession of gnome.professions" class="professions col-4">
+          <p>{{ profession }}</p>
+        </div>
+      </div>
+      <div class="row friends-row">
+        <div class="col-12 mt-3">
+          <p>Friends</p>
+        </div>
+        <div *ngFor="let friend of gnome.friends" class="friends col-6 col-md-4">
+          <p>{{ friend }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div *ngIf="!error; else errorTemplate" class="text-center"> 
+    <h1>Loading...</h1>
+  </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <div class = "text-center">
+    <h1>{{ error.message }}</h1>
+  </div>
+</ng-template>

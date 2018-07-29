@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <h1 class="navbar-brand">Gnome App</h1>
+  <button 
+    (click)="onToggleCollapse()" 
+    class="navbar-toggler" 
+    type="button" 
+    data-toggle="collapse" 
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" 
+    aria-expanded="false" 
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [class.show]="navStatus" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li *ngFor="let filter of filters" [ngClass]="{'active': selectedFilter === filter}" class="nav-item active">
+        <p (click)="setFilterBy(filter)" class="nav-link mt-3">{{ filter }}</p>
+      </li>
+    </ul>
+    <input (keyup)="onKeyup($event)" [(ngModel)]="searchValue" type="text" [placeholder]="placeholder"/>
+  </div>
+</nav>

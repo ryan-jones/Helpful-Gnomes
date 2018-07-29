@@ -1,0 +1,72 @@
+.container-fluid {
+  width: 100%;
+}
+
+.gnome-row {
+	border-bottom: 1px solid black;
+	.row {
+		text-align: center;
+
+		.gnome-name {
+			background-color: #343a40;
+			color: #fff;
+		}
+	}
+}
+
+.professions-row {
+	background-color: #eee;
+}
+
+.friends-row {
+	background-color: #ccc;
+}
+
+.professions-row, .friends-row, .descriptions-row {
+
+	div.col-12 {
+		text-decoration: underline;
+		font-weight: bold;
+	}
+
+	@media (max-width: 500px) {
+		p {
+			font-size: 10px;
+		}
+	}
+}
+
+img {
+	height: 10vh;
+	width: 100px;
+}
+
+.gnome-container {
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.5;
+	position: relative;
+	height: 20vh;
+	padding: 0;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: black;
+		opacity: .5; 
+		z-index: 1;
+	}
+
+	p {
+		width: 100%;
+		top: 25%;
+		position: absolute;
+		z-index: 1000;
+		color: #fff;
+		padding: 1em;
+	}
+}
